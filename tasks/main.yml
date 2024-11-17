@@ -1,0 +1,29 @@
+---
+-
+  name: "Ensure dnf-automatic is installed"
+  when: "dnf_automatic_install"
+  become: true
+  package:
+    name: "{{ dnf_automatic_package_name }}"
+    state: "{{ dnf_automatic_package_state }}"
+  tags: ["dnf_automatic", "dnf_automatic-install"]
+-
+  name: Configure dnf-automatic.conf
+  when: "dnf_automatic_configure"
+  become: true
+  template:
+    src: "automatic.conf.j2"
+    dest: "{{ dnf_automatic_config_path }}"
+    owner: "{{ dnf_automatic_config_owner }}"
+    group: "{{ dnf_automatic_config_group }}"
+    mode: "{{ dnf_automatic_config_mode }}"
+  tags: ["dnf_automatic", "dnf_automatic-configure"]
+-
+  name: Enable dnf-automatic service
+  when: "dnf_automatic_service"
+  become: true
+  service:
+    name: "{{ dnf_automatic_service_name }}"
+    state: "{{ dnf_automatic_service_state }}"
+    enabled: "{{ dnf_automatic_service_enabled }}"
+  tags: ["dnf_automatic", "dnf_automatic-service"]

@@ -1,0 +1,30 @@
+---
+
+name: "Molecule"
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  molecule:
+    runs-on: "ubuntu-latest"
+    steps:
+      -
+        name: "Checkout ${{ github.repository }}"
+        uses: "actions/checkout@v4"
+      -
+        name: "Checkout jtyr/config_encoder_filters"
+        uses: "actions/checkout@v4"
+        with:
+          repository: "jtyr/ansible-config_encoder_filters"
+          path: "molecule/default/roles/jtyr.config_encoder_filters"
+      -
+        name: "Ansible Molecule"
+        uses: "gofrolist/molecule-action@v2"
+        with:
+          molecule_args: "-d docker"

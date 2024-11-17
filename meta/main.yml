@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  role_name: "dnf_automatic"
+  author: "cornfeedhobo"
+  description: "Install and configure dnf-automatic"
+  license: "MIT"
+  galaxy_tags: ["dnf", "security"]
+  min_ansible_version: "2.9"
+  platforms:
+    -
+      name: EL
+      versions:
+        - "8"
+        - "9"
+
+dependencies:
+  -
+    role: "jtyr.config_encoder_filters"
+    tags: ["dnf", "dnf-configure"]

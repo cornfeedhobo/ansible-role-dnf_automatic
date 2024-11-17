@@ -1,0 +1,3 @@
+# {{ ansible_managed }}
+
+{{ __dnf_automatic_config  | combine(dnf_automatic_config, recursive=True) | encode_ini(delimiter=' = ',quote='"') }}
