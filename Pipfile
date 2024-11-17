@@ -9,10 +9,5 @@ ansible-doctor = "*"
 ansible-lint = "*"
 docker = "*"
 molecule = "*"
-molecule-plugins = {extras = ["docker", "lint"], version = "*"}
-selinux-please-lie-to-me = "*"
-
-[dev-packages]
-
-[requires]
-python_version = "3.9"
+molecule-plugins = {extras = ["docker"], version = "*"}
+selinux = "*"

@@ -1,3 +1,4 @@
+---
 renderer:
-  force_overwrite: True
+  force_overwrite: true
   include_header: ".header"

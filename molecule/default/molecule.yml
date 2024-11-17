@@ -1,14 +1,13 @@
 ---
-lint: |
-  set -e
-  flake8
-  yamllint .
-  ansible-lint
 dependency:
   name: "galaxy"
 driver:
   name: "docker"
 platforms:
+  -
+    name: "almalinux-8"
+    image: "docker.io/almalinux:8"
+    pre_build_image: false
   -
     name: "almalinux-9"
     image: "docker.io/almalinux:9"

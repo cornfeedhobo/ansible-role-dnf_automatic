@@ -58,6 +58,7 @@ __dnf_automatic_config:
     # Name of the host to connect to to send email messages.
     email_host: "localhost"
 
+  # yamllint disable rule:comments-indentation
   command:
     # The shell command to execute. This is a Python format string, as used in
     # str.format(). The format function will pass a shell-quoted argument called

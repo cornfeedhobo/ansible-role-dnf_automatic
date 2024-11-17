@@ -6,9 +6,12 @@
   gather_facts: false
   tasks:
     -
+      name: "Include role variables"
+      ansible.builtin.include_vars: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}/defaults/main.yml"
+    -
       name: "Get the dnf-automatic package status"
       ansible.builtin.package:
-        name: "dnf-automatic"
+        name: "{{ dnf_automatic_package_name }}"
       check_mode: true
       diff: true
       register: "dnf_automatic_stat"

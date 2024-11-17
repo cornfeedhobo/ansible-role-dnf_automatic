@@ -15,8 +15,8 @@ ENV {{ var }} {{ value }}
 {% endif %}
 
 RUN set -ex && \
-	yum makecache && \
-	yum --assumeyes install \
+	dnf makecache && \
+	dnf --assumeyes install \
 		python3 \
 		python3-devel \
 		bash \

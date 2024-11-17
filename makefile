@@ -5,24 +5,20 @@ help: ## Prints help for targets
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 
-.PHONY: pipenv-sync
-pipenv-sync: ## Run pipenv sync
-	pipenv sync
-
-
-.PHONY: pipenv-update
-pipenv-update: ## Run pipenv update
-	pipenv lock
-	jq -r 'del(.default.selinux)' < Pipfile.lock > Pipfile.lock.new
-	mv Pipfile.lock.new Pipfile.lock
-	pipenv sync
-
-
 .PHONY: test
 test: ## Run molecule test
 	pipenv run molecule test
 
 
+.PHONY: lint
+lint: ## Run ansible-lint
+	pipenv run ansible-lint
+
+
 .PHONY: generate-docs
 docs: ## Run ansible-doctor
 	pipenv run ansible-doctor ./
+
+
+.PHONY: all
+all: test lint docs ## Run test, lint, docs
