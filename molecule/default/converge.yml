@@ -1,0 +1,12 @@
+---
+-
+  name: "Converge"
+  hosts: "all"
+  tasks:
+    -
+      name: "Include cornfeedhobo.dnf_automatic"
+      ansible.builtin.include_role:
+        name: "cornfeedhobo.dnf_automatic"
+      vars:
+        dnf_automatic_install: true
+        dnf_automatic_configure: true
