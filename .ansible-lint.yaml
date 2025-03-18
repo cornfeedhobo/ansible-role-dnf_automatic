@@ -4,4 +4,8 @@ enable_list:
   - "galaxy-version-incorrect"
   - "name[casing]"
   - "name[prefix]"
+  - "schema[ansible-lint-config]"
+  - "schema[meta]"
+  - "schema[tasks]"
+  - "schema[vars]"
   - "yaml"

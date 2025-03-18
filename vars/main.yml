@@ -1,4 +1,5 @@
 ---
+
 __dnf_automatic_config:
   commands:
     #  What kind of upgrade to perform:

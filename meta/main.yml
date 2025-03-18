@@ -1,4 +1,5 @@
 ---
+
 galaxy_info:
   role_name: "dnf_automatic"
   author: "cornfeedhobo"
@@ -7,13 +8,12 @@ galaxy_info:
   galaxy_tags: ["dnf", "security"]
   min_ansible_version: "2.9"
   platforms:
-    -
-      name: "EL"
+    - name: "EL"
       versions:
         - "8"
         - "9"
-    -
-      name: "Fedora"
+
+    - name: "Fedora"
       versions:
         - "32"
         - "33"
@@ -27,6 +27,5 @@ galaxy_info:
         - "41"
 
 dependencies:
-  -
-    role: "jtyr.config_encoder_filters"
+  - role: "jtyr.config_encoder_filters"
     tags: ["dnf", "dnf-configure"]

@@ -1,22 +1,21 @@
 ---
+
 # This is an example playbook to execute Ansible tests.
--
-  name: "Verify"
+- name: "Verify"
   hosts: "all"
   gather_facts: false
   tasks:
-    -
-      name: "Include role variables"
+    - name: "Include role variables"
       ansible.builtin.include_vars: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}/defaults/main.yml"
-    -
-      name: "Get the dnf-automatic package status"
+
+    - name: "Get the dnf-automatic package status"
       ansible.builtin.package:
-        name: "{{ dnf_automatic_package_name }}"
+        name: "{{ dnf_automatic_packages }}"
       check_mode: true
       diff: true
       register: "dnf_automatic_stat"
-    -
-      name: "Assert that dnf-automatic is already installed"
+
+    - name: "Assert that dnf-automatic is already installed"
       ansible.builtin.assert:
         that:
           - "not dnf_automatic_stat.changed"

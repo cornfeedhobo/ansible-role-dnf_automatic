@@ -1,10 +1,9 @@
 ---
--
-  name: "Converge"
+
+- name: "Converge"
   hosts: "all"
   tasks:
-    -
-      name: "Include cornfeedhobo.dnf_automatic"
+    - name: "Include cornfeedhobo.dnf_automatic"
       ansible.builtin.include_role:
         name: "cornfeedhobo.dnf_automatic"
       vars:

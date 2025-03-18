@@ -13,8 +13,8 @@ Install and configure dnf-automatic
   - [dnf_automatic_config_path](#dnf_automatic_config_path)
   - [dnf_automatic_configure](#dnf_automatic_configure)
   - [dnf_automatic_install](#dnf_automatic_install)
-  - [dnf_automatic_package_name](#dnf_automatic_package_name)
   - [dnf_automatic_package_state](#dnf_automatic_package_state)
+  - [dnf_automatic_packages](#dnf_automatic_packages)
   - [dnf_automatic_service](#dnf_automatic_service)
   - [dnf_automatic_service_enabled](#dnf_automatic_service_enabled)
   - [dnf_automatic_service_name](#dnf_automatic_service_name)
@@ -92,20 +92,20 @@ dnf_automatic_configure: false
 dnf_automatic_install: false
 ```
 
-### dnf_automatic_package_name
-
-#### Default value
-
-```YAML
-dnf_automatic_package_name: dnf-automatic
-```
-
 ### dnf_automatic_package_state
 
 #### Default value
 
 ```YAML
 dnf_automatic_package_state: present
+```
+
+### dnf_automatic_packages
+
+#### Default value
+
+```YAML
+dnf_automatic_packages: [dnf-automatic]
 ```
 
 ### dnf_automatic_service

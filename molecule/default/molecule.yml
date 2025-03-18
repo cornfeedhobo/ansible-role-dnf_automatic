@@ -1,11 +1,13 @@
 ---
+
 dependency:
   name: "galaxy"
+
 driver:
   name: "docker"
+
 platforms:
-  -
-    name: "molecule-almalinux"
+  - name: "molecule-almalinux"
     image: "docker.io/almalinux:9"
     commands:
       - "dnf makecache"
@@ -15,8 +17,8 @@ platforms:
           iproute
           python3-devel
           sudo
-  -
-    name: "molecule-fedora"
+
+  - name: "molecule-fedora"
     image: "docker.io/fedora:41"
     commands:
       - "dnf makecache"
@@ -26,7 +28,9 @@ platforms:
           python3-devel
           python3-libdnf5
           sudo
+
 provisioner:
   name: "ansible"
+
 verifier:
   name: "ansible"

@@ -1,14 +1,15 @@
 ---
--
-  name: "Ensure dnf-automatic is installed"
+
+- name: "Ensure dnf-automatic is installed"
   when: "dnf_automatic_install"
   become: true
   ansible.builtin.package:
-    name: "{{ dnf_automatic_package_name }}"
+    name: "{{ dnf_automatic_packages | list }}"
     state: "{{ dnf_automatic_package_state }}"
+  register: "_dnf_automatic_packages"
   tags: ["dnf_automatic", "dnf_automatic-install"]
--
-  name: "Configure dnf-automatic.conf"
+
+- name: "Configure dnf-automatic.conf"
   when: "dnf_automatic_configure"
   become: true
   ansible.builtin.template:
@@ -18,9 +19,11 @@
     group: "{{ dnf_automatic_config_group }}"
     mode: "{{ dnf_automatic_config_mode }}"
   tags: ["dnf_automatic", "dnf_automatic-configure"]
--
-  name: "Enable dnf-automatic service"
-  when: "dnf_automatic_service"
+
+- name: "Enable dnf-automatic service"
+  when:
+    - "dnf_automatic_service"
+    - "not ansible_check_mode or (ansible_check_mode and not _dnf_automatic_packages.changed)"
   become: true
   ansible.builtin.service:
     name: "{{ dnf_automatic_service_name }}"
